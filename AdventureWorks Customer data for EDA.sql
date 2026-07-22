@@ -54,3 +54,47 @@ of the customer base, while 45.91% are single.
 This suggests that marketing strategies focused on households, 
 family-oriented products, and long-term customer relationships 
 could have a broader reach within this dataset.*/
+-- Q6. What percentage of customers are Homeowners vs Non-Homeowners?
+select homeowner,count(*) as Customer_Count,round(count(*)*100.0/(select count(*)
+from adventureworks_customer),2) as Percentage from adventureworks_customer
+group by HomeOwner;
+/*Conclusion:
+
+The analysis shows the distribution of customers based on home ownership.
+It helps identify the proportion of homeowners versus non-homeowners within the 
+customer base.
+This information is useful for customer segmentation, targeted marketing campaigns
+,and understanding purchasing behavior, as homeowners often exhibit different 
+buying patterns compared to non-homeowners.
+*/
+-- Q7. Which occupation has the highest number of customers?
+select Occupation,count(*) as highest_number_of_customers from adventureworks_customer
+group by Occupation
+order by highest_number_of_customers desc;
+/*Conclusion:
+
+The results rank customer occupations from highest to lowest based on the number 
+of customers.The occupation appearing at the top represents the largest customer 
+segment in the dataset.Understanding the dominant occupation helps businesses 
+design targeted marketing strategies, personalize product recommendations, 
+and identify key customer demographics for future campaigns
+*/
+-- Q8. How many unique occupations are represented in the dataset?
+select count(distinct Occupation) as Customer_Count from adventureworks_customer;
+
+-- Q9. How many unique education levels are represented in the dataset?
+select count(distinct educationlevel) as Customer_Count from adventureworks_customer;
+-- Q13. Which education level has the highest number of customers?
+select educationlevel,count(*) as Customer_Count from adventureworks_customer
+group by EducationLevel
+order by Customer_Count desc
+limit 1;
+-- Q10. What is the distribution of customers by education level?
+select educationlevel,count(*) as Customer_Count from adventureworks_customer
+group by EducationLevel
+order by Customer_Count desc;
+-- Q11. What percentage of customers belong to each education level?
+select educationlevel,round(count(*)*100.0/(select count(*) from adventureworks_customer),2)
+as Customer_Count from adventureworks_customer
+group by EducationLevel
+order by Customer_Count desc;
