@@ -98,3 +98,58 @@ select educationlevel,round(count(*)*100.0/(select count(*) from adventureworks_
 as Customer_Count from adventureworks_customer
 group by EducationLevel
 order by Customer_Count desc;
+-- ============================================================================================
+-- Age Analysis
+-- ============================================================================================
+alter table adventureworks_customer add column Age int;
+update adventureworks_customer set age=timestampdiff(Year,birthdate,curdate());
+select FirstName,BirthDate,age from adventureworks_customer;
+-- Q1. What is the minimum, maximum, and average age?
+select min(age)as minimum_age,max(age) as maximum_age,avg(age) as average_age 
+from adventureworks_customer;
+-- Q2. Create age groups (40–49, 50–59, 60–69, 70+).
+select 
+case 
+when age between 40 and 49 then '40-49'
+when age between 50 and 59 then '50–59'
+when age between 60 and 69 then '60–69'
+else '70+'
+end as age_groups,
+count(*) as customer
+from adventureworks_customer 
+group by age_groups;
+
+-- Q3. Which age group has the highest number of customers?
+select 
+case 
+when age between 40 and 49 then '40-49'
+when age between 50 and 59 then '50–59'
+when age between 60 and 69 then '60–69'
+else '70+'
+end as age_groups,count(*) as highest_number_of_customers
+from adventureworks_customer
+GROUP BY Age_Groups
+order by highest_number_of_customers desc
+limit 1;
+-- Q4. What is the gender distribution within each age group?
+select gender, 
+case 
+when age between 40 and 49 then '40-49'
+when age between 50 and 59 then '50–59'
+when age between 60 and 69 then '60–69'
+else '70+'
+end as age_groups,count(*) as  customer
+from adventureworks_customer
+group by gender,age_groups
+order by gender,age_groups;
+-- Q5. Which marital status is most common in each age group?
+select MaritalStatus,
+case 
+when age between 40 and 49 then '40-49'
+when age between 50 and 59 then '50–59'
+when age between 60 and 69 then '60–69'
+else '70+'
+end as age_groups,count(*) as  customer
+from adventureworks_customer
+group by MaritalStatus,age_groups;
+
