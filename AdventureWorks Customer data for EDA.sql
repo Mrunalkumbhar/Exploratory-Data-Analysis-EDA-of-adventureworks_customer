@@ -153,3 +153,52 @@ end as age_groups,count(*) as  customer
 from adventureworks_customer
 group by MaritalStatus,age_groups;
 
+-- ================================================================================================================================================================================
+/* Income Analysis*/
+-- ================================================================================================================================================================================
+-- Q11. What are the minimum, maximum, and average annual incomes?
+select max(AnnualIncome) as maximum_income,
+min(AnnualIncome) as minimum_income,
+round(avg(AnnualIncome),2) as average_annual_incomes 
+from adventureworks_customer;
+-- Q12. Which customers have the highest annual income?
+select * from adventureworks_customer
+where AnnualIncome=
+(select max(AnnualIncome) from adventureworks_customer);
+-- Q13. Which occupation has the highest average income?
+select occupation,round(avg(AnnualIncome),2) as highest_average_income 
+from adventureworks_customer
+group by occupation
+order by highest_average_income desc
+limit 1  ;
+-- Q14. Which education level has the highest average income?
+select EducationLevel,round(avg(AnnualIncome),2) as highest_average_income
+from adventureworks_customer
+group by EducationLevel
+order by highest_average_income desc
+limit 1;
+-- Q15. Compare average income between males and females.
+select Gender,round(avg(AnnualIncome),2) AS Average_Income from adventureworks_customer
+group by Gender;
+-- Q16. Compare average income between married and single customers.
+select MaritalStatus,round(avg(AnnualIncome),2) AS Average_Income from adventureworks_customer
+group by MaritalStatus;
+-- Q17. Create income groups:
+--        Less than $30K
+--        $30K–$60K
+--        $60K–$90K
+--        Above $90K
+select 
+case
+ when AnnualIncome<30000 then 'Less than $30K'
+ when AnnualIncome between 30000 and 60000 then '$30K–$60K'
+ when AnnualIncome between 60001 and 90000 then '$60K–$90K'
+ else 'Above $90K' 
+ end as income_groups,
+ count(*) AS Customer_Count
+FROM adventureworks_customer
+GROUP BY income_groups
+ORDER BY Customer_Count DESC;
+
+
+
