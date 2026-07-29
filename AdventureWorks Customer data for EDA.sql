@@ -200,5 +200,23 @@ FROM adventureworks_customer
 GROUP BY income_groups
 ORDER BY Customer_Count DESC;
 
+-- ==========================================================================================================================================
+/* Section 4: Education Analysis*/
+-- ==========================================================================================================================================
+-- Q18. How many customers belong to each education level?
+select educationlevel,count(*) as No_customers from adventureworks_customer
+group by educationlevel;
+-- Q19. Which education level is the most common?
+select educationlevel,count(*) as No_customers from adventureworks_customer
+group by educationlevel
+order by No_customers desc
+limit 1;
+-- Q20. What is the average income by education level?
+select EducationLevel,round(avg(AnnualIncome),2) as average_income from adventureworks_customer
+group by educationlevel;
+-- Q21. What is the gender distribution by education level?
+select EducationLevel,gender,count(*) as No_customers from adventureworks_customer
+group by EducationLevel,gender;
+
 
 
