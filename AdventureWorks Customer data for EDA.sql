@@ -218,5 +218,25 @@ group by educationlevel;
 select EducationLevel,gender,count(*) as No_customers from adventureworks_customer
 group by EducationLevel,gender;
 
+-- ==============================================================================================================================================
+/* Occupation Analysis */
+-- ==============================================================================================================================================
+-- Q22. How many customers belong to each occupation?
+select Occupation ,count(*) as No_customers from adventureworks_customer
+group by Occupation;
+-- Q23. Which occupation has the highest average income?
+select occupation,round(avg(AnnualIncome),2)as highest_average_income from adventureworks_customer
+group by occupation
+order by highest_average_income desc
+limit 1;
+-- Q24. Which occupation has the highest number of homeowners?
+select occupation,count(*) as highest_number_of_homeowners from adventureworks_customer
+where HomeOwner='Y'
+group by Occupation
+order by highest_number_of_homeowners desc;
+-- Q25. What is the average number of children by occupation?
+select occupation,round(avg(TotalChildren),0) as average_number_of_children from adventureworks_customer
+group by Occupation;
+
 
 
