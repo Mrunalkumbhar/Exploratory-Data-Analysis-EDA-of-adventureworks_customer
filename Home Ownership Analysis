@@ -1,0 +1,81 @@
+# 🏠 Home Ownership Analysis
+
+## Objective
+
+Analyze customer home ownership patterns to understand their distribution across gender and marital status, and compare the average annual income of homeowners and non-homeowners.
+
+---
+
+## Business Questions
+
+### Q26. What percentage of customers own a home?
+
+| Home Owner  | Total Customers | Percentage |
+| ----------- | --------------: | ---------: |
+| **Yes (Y)** |          12,260 | **67.56%** |
+| **No (N)**  |           5,888 | **32.44%** |
+
+### 📌 Insight
+
+* Approximately **67.56%** of customers own a home.
+* Only **32.44%** of customers do not own a home.
+* The customer base is predominantly composed of homeowners.
+
+---
+
+### Q27. Compare homeowner status by gender.
+
+| Home Owner | Gender | Total Customers |
+| ---------- | ------ | --------------: |
+| Y          | Male   |           6,198 |
+| Y          | Female |           6,062 |
+| N          | Male   |           3,037 |
+| N          | Female |           2,851 |
+
+### 📌 Insight
+
+* Home ownership is nearly evenly distributed between **male and female** customers.
+* Both genders have a similar proportion of homeowners and non-homeowners.
+* No significant gender-based difference is observed in home ownership.
+
+---
+
+### Q28. Compare homeowner status by marital status.
+
+| Home Owner | Marital Status | Total Customers |
+| ---------- | -------------- | --------------: |
+| Y          | Married        |           8,001 |
+| Y          | Single         |           4,259 |
+| N          | Single         |           4,072 |
+| N          | Married        |           1,816 |
+
+### 📌 Insight
+
+* **Married customers** are much more likely to own a home.
+* The number of **single homeowners** and **single non-homeowners** is relatively similar.
+* Home ownership appears to be positively associated with marital status.
+
+---
+
+### Q29. Compare average income of homeowners vs. non-homeowners.
+
+| Home Owner | Average Annual Income |
+| ---------- | --------------------: |
+| Y          |               $58,290 |
+| N          |               $55,144 |
+
+### 📌 Insight
+
+* Homeowners earn an average annual income of **$58,290**.
+* Non-homeowners earn an average annual income of **$55,144**.
+* Homeowners have an average income approximately **$3,146** higher than non-homeowners, indicating a positive relationship between income and home ownership.
+
+---
+
+## Key Findings
+
+* 🏠 **67.56%** of customers own a home.
+* 👨‍👩‍👧‍👦 Home ownership is balanced across both genders.
+* 💍 Married customers have a significantly higher home ownership rate than single customers.
+* 💰 Homeowners earn a higher average annual income than non-homeowners.
+* 📊 These insights can help businesses improve customer segmentation, marketing strategies, and financial product targeting.
