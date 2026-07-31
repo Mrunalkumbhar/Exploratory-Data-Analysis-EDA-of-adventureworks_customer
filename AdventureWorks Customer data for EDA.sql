@@ -238,5 +238,21 @@ order by highest_number_of_homeowners desc;
 select occupation,round(avg(TotalChildren),0) as average_number_of_children from adventureworks_customer
 group by Occupation;
 
+-- ========================================================================================================================================================================================
+/* Home Ownership Analysis */
+-- =========================================================================================================================================================================================
+-- Q26. What percentage of customers own a home?
+SELECT HomeOwner,COUNT(*) AS Total_Customers,ROUND(COUNT(*) * 100.0 /
+(SELECT COUNT(*) FROM adventureworks_customer),2) AS Percentage FROM adventureworks_customer
+GROUP BY HomeOwner;
+-- Q27. Compare homeowner status by gender.
+select homeowner,gender,count(*) as Compare_homeowner from adventureworks_customer
+group by homeowner,gender ;
+-- Q28. Compare homeowner status by marital status.
+select homeowner,MaritalStatus,count(*) as Compare_homeowner from adventureworks_customer
+group by homeowner,MaritalStatus ;
+-- Q29. Compare average income of homeowners vs non-homeowners.
+select homeowner,round(avg(annualincome),0) from adventureworks_customer
+group by homeowner;
 
 
