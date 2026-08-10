@@ -1,0 +1,173 @@
+# 👥 AdventureWorks Customer – Family Analysis
+
+## 📌 Project Overview
+
+This project analyzes **family-related customer characteristics** using SQL and the AdventureWorks Customer dataset.
+
+The objective is to understand customer family size, average number of children, education-level differences, and the relationship between the number of children and average income.
+
+The analysis was performed using **MySQL** with SQL aggregation and grouping techniques.
+
+---
+
+## 🎯 Business Questions
+
+### Family Analysis
+
+* **Q30.** What is the distribution of `TotalChildren`?
+* **Q31.** What is the average number of children?
+* **Q32.** Which education level has the highest average number of children?
+* **Q33.** How does average income vary based on the number of children?
+
+---
+
+## 🛠️ SQL Skills Used
+
+* `SELECT`
+* `GROUP BY`
+* `ORDER BY`
+* `AVG()`
+* `COUNT()`
+* `ROUND()`
+* Aggregate Functions
+* Data Aggregation
+* Exploratory Data Analysis (EDA)
+
+---
+
+## 📊 Analysis & Results
+
+### Q30. Distribution of Total Children
+
+The analysis was performed using:
+
+```sql
+SELECT
+    TotalChildren,
+    COUNT(*) AS Customer_Count,
+    ROUND(
+        COUNT(*) * 100.0 /
+        (SELECT COUNT(*) FROM adventureworks_customer),
+        2
+    ) AS Percentage
+FROM adventureworks_customer
+GROUP BY TotalChildren
+ORDER BY TotalChildren;
+```
+
+The result shows the distribution of customers across different numbers of children.
+
+---
+
+### Q31. Average Number of Children
+
+**Average number of children: 1.8**
+
+```sql
+SELECT
+    ROUND(AVG(TotalChildren), 2) AS Average_Number_of_Children
+FROM adventureworks_customer;
+```
+
+---
+
+### Q32. Average Number of Children by Education Level
+
+| Education Level     | Average Children |
+| ------------------- | ---------------: |
+| Bachelors           |              1.9 |
+| High School         |              1.9 |
+| Graduate Degree     |              1.9 |
+| Partial College     |              1.7 |
+| Partial High School |              1.7 |
+
+### Key Finding
+
+**Bachelors, High School, and Graduate Degree** customers have the highest average number of children at approximately **1.9**.
+
+---
+
+### Q33. Average Income by Number of Children
+
+| Total Children | Average Income |
+| -------------: | -------------: |
+|              0 |      51,509.84 |
+|              1 |      51,573.76 |
+|              2 |      55,668.38 |
+|              3 |      60,877.84 |
+|              4 |      68,928.73 |
+|              5 |      72,476.80 |
+
+### Key Finding
+
+Average income generally **increases as the number of children increases** in this dataset.
+
+Customers with:
+
+* **0 children** → Average income: **51,509.84**
+* **3 children** → Average income: **60,877.84**
+* **5 children** → Average income: **72,476.80**
+
+The difference between customers with 0 and 5 children is approximately **20,966.96**.
+
+> **Note:** This represents an observed relationship in the dataset and does not imply that having more children causes higher income.
+
+---
+
+## 💡 Business Insights
+
+1. Family size varies across customers in the dataset.
+2. Education level shows differences in average number of children.
+3. Customers with Bachelors, High School, and Graduate Degree education have the highest average number of children.
+4. Average income increases progressively from customers with 0 children to customers with 5 children.
+5. SQL aggregation provides a simple way to identify relationships between demographic and financial characteristics.
+
+---
+
+## 📂 Project Structure
+
+```text
+AdventureWorks-Customer-EDA/
+│
+├── SQL/
+│   ├── Customer_Overview.sql
+│   ├── Age_Analysis.sql
+│   ├── Income_Analysis.sql
+│   ├── Education_Analysis.sql
+│   ├── Occupation_Analysis.sql
+│   └── Family_Analysis.sql
+│
+├── Data/
+│   └── adventureworks_customer.csv
+│
+├── README.md
+└── LICENSE
+```
+
+---
+
+## 🚀 Tools & Technologies
+
+| Category        | Tools                     |
+| --------------- | ------------------------- |
+| Database        | MySQL                     |
+| Query Language  | SQL                       |
+| Analysis        | Exploratory Data Analysis |
+| Data Processing | SQL Aggregations          |
+| Version Control | Git & GitHub              |
+
+---
+
+## 👨‍💻 About Me
+
+I am a **Data Analyst / Data Engineer** with 3+ years of professional experience working with **SQL, Python, ETL, Power BI, data analytics, and business intelligence**.
+
+This project demonstrates my ability to use SQL to analyze customer data and convert raw datasets into meaningful business insights.
+
+### 🔗 Skills
+
+**SQL | Python | Power BI | ETL | Data Analytics | Business Intelligence | Data Visualization | MySQL | Exploratory Data Analysis**
+
+---
+
+⭐ If you find this project useful, consider giving the repository a **star**!
