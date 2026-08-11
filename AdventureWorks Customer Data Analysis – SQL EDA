@@ -1,0 +1,373 @@
+# 📊 AdventureWorks Customer Data Analysis – SQL EDA
+
+## 📌 Project Overview
+
+This project focuses on performing **Exploratory Data Analysis (EDA)** on the **AdventureWorks Customer dataset** using **MySQL**.
+
+The objective is to analyze customer demographics, income, education, occupation, homeownership, marital status, and age to identify meaningful patterns and generate **business-oriented insights using SQL**.
+
+The project demonstrates practical SQL skills required for **Data Analyst, Business Intelligence, and Data Engineering roles**.
+
+---
+
+## 🎯 Project Objectives
+
+The analysis aims to answer key business questions related to:
+
+* Customer demographics
+* Gender and marital status distribution
+* Customer age analysis
+* Income distribution
+* Education and occupation analysis
+* Homeownership patterns
+* Cross-analysis between customer attributes
+* Identifying customer segments with higher income
+* Understanding relationships between demographic factors and income
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Technology | Purpose                                  |
+| ---------- | ---------------------------------------- |
+| **MySQL**  | Data cleaning, transformation & analysis |
+| **SQL**    | EDA and business analysis                |
+| **GitHub** | Project documentation & version control  |
+
+---
+
+## 🔍 SQL Skills Demonstrated
+
+This project demonstrates the practical use of:
+
+* `SELECT`
+* `WHERE`
+* `DISTINCT`
+* `GROUP BY`
+* `HAVING`
+* `ORDER BY`
+* `LIMIT`
+* `CASE WHEN`
+* Aggregate functions
+
+  * `COUNT()`
+  * `AVG()`
+  * `MIN()`
+  * `MAX()`
+  * `SUM()`
+* `ROUND()`
+* Data cleaning and transformation
+* Conditional segmentation
+* Cross-analysis
+* Customer segmentation
+* Business-oriented SQL analysis
+
+---
+
+# 📊 Analysis Sections
+
+## 1️⃣ Customer Overview
+
+The first section analyzes the overall customer base.
+
+Key questions include:
+
+* How many customers are there?
+* What is the gender distribution?
+* What is the marital status distribution?
+* What percentage of customers are Male vs Female?
+* What percentage of customers are Married vs Single?
+
+### Key Findings
+
+* **Total Customers:** 18,148
+* **Male:** 9,235 (50.89%)
+* **Female:** 8,913 (49.11%)
+* **Married:** 9,817 (54.09%)
+* **Single:** 8,331 (45.91%)
+
+---
+
+# 2️⃣ Age Analysis
+
+The age analysis examines the distribution and characteristics of customers based on age.
+
+The analysis includes:
+
+* Minimum age
+* Maximum age
+* Average age
+* Age group segmentation
+* Customer distribution across age groups
+
+Age groups were created using SQL `CASE WHEN` statements.
+
+Example:
+
+```sql
+CASE
+    WHEN Age BETWEEN 40 AND 49 THEN '40-49'
+    WHEN Age BETWEEN 50 AND 59 THEN '50-59'
+    WHEN Age BETWEEN 60 AND 69 THEN '60-69'
+    WHEN Age BETWEEN 70 AND 79 THEN '70-79'
+    WHEN Age >= 80 THEN '80+'
+    ELSE 'Other'
+END AS AgeGroup
+```
+
+---
+
+# 3️⃣ Income Analysis
+
+The income analysis explores customer earning patterns.
+
+Key analysis includes:
+
+* Minimum income
+* Maximum income
+* Average income
+* Average income by education
+* Average income by occupation
+* Income comparison across customer segments
+
+### Income Summary
+
+| Metric         |     Value |
+| -------------- | --------: |
+| Minimum Income |    10,000 |
+| Maximum Income |   170,000 |
+| Average Income | 57,269.12 |
+
+---
+
+# 4️⃣ Education Analysis
+
+The education analysis examines customer distribution and income patterns across education levels.
+
+### Customer Distribution
+
+| Education Level     | Customers |
+| ------------------- | --------: |
+| Bachelors           |     5,261 |
+| Partial College     |     4,966 |
+| High School         |     3,241 |
+| Graduate Degree     |     3,125 |
+| Partial High School |     1,555 |
+
+### Average Income by Education
+
+| Education Level     | Average Income |
+| ------------------- | -------------: |
+| Graduate Degree     |      66,150.40 |
+| Bachelors           |      64,396.50 |
+| Partial College     |      55,090.62 |
+| High School         |      48,963.28 |
+| Partial High School |      39,575.56 |
+
+**Insight:** Customers with a **Graduate Degree** have the highest average income among the education categories analyzed.
+
+---
+
+# 5️⃣ Occupation Analysis
+
+The occupation analysis compares customer distribution and income across different occupations.
+
+### Customer Distribution
+
+| Occupation     | Customers |
+| -------------- | --------: |
+| Professional   |     5,424 |
+| Skilled Manual |     4,501 |
+| Management     |     3,011 |
+| Clerical       |     2,859 |
+| Manual         |     2,353 |
+
+### Key Finding
+
+**Management** has the highest average income among the occupation categories analyzed, with an average income of approximately **92,218.53**.
+
+---
+
+# 6️⃣ Homeownership Analysis
+
+The project also analyzes homeownership patterns.
+
+### Homeownership Distribution
+
+| Homeowner | Customers | Percentage |
+| --------- | --------: | ---------: |
+| Yes       |    12,260 |     67.56% |
+| No        |     5,888 |     32.44% |
+
+The analysis also compares homeownership with income and education levels.
+
+### Average Income by Homeownership
+
+| Homeowner | Average Income |
+| --------- | -------------: |
+| Yes       |         58,290 |
+| No        |         55,144 |
+
+---
+
+# 7️⃣ 🔀 Cross Analysis
+
+The cross-analysis section focuses on relationships between multiple customer attributes.
+
+## Q34. Which occupation has the highest average income among females?
+
+```sql
+SELECT 
+    Occupation,
+    ROUND(AVG(AnnualIncome), 1) AS highest_average_income
+FROM adventureworks_customer
+WHERE Gender = 'F'
+GROUP BY Occupation
+ORDER BY highest_average_income DESC
+LIMIT 1;
+```
+
+---
+
+## Q35. Which occupation has the highest average income among males?
+
+```sql
+SELECT 
+    Occupation,
+    ROUND(AVG(AnnualIncome), 1) AS highest_average_income
+FROM adventureworks_customer
+WHERE Gender = 'M'
+GROUP BY Occupation
+ORDER BY highest_average_income DESC
+LIMIT 1;
+```
+
+---
+
+## Q36. Which age group has the highest average income?
+
+```sql
+SELECT 
+    CASE
+        WHEN Age BETWEEN 40 AND 49 THEN '40-49'
+        WHEN Age BETWEEN 50 AND 59 THEN '50-59'
+        WHEN Age BETWEEN 60 AND 69 THEN '60-69'
+        WHEN Age BETWEEN 70 AND 79 THEN '70-79'
+        WHEN Age >= 80 THEN '80+'
+        ELSE 'Other'
+    END AS AgeGroup,
+    ROUND(AVG(AnnualIncome), 1) AS highest_average_income
+FROM adventureworks_customer
+GROUP BY AgeGroup
+ORDER BY highest_average_income DESC
+LIMIT 1;
+```
+
+---
+
+## Q37. Which education level has the most homeowners?
+
+```sql
+SELECT 
+    EducationLevel,
+    COUNT(*) AS homeowner_count
+FROM adventureworks_customer
+WHERE HomeOwner = 'Y'
+GROUP BY EducationLevel
+ORDER BY homeowner_count DESC
+LIMIT 1;
+```
+
+---
+
+## Q38. Which marital status has the higher average income?
+
+```sql
+SELECT 
+    MaritalStatus,
+    ROUND(AVG(AnnualIncome), 1) AS higher_average_income
+FROM adventureworks_customer
+GROUP BY MaritalStatus
+ORDER BY higher_average_income DESC
+LIMIT 1;
+```
+
+---
+
+# 💡 Business Insights
+
+The analysis provides several useful customer insights:
+
+* The customer base has a relatively balanced **male and female distribution**.
+* **Married customers** represent a larger share of the customer base than single customers.
+* **Graduate Degree** customers have the highest average income among education categories.
+* **Management** has the highest average income among occupations.
+* Approximately **67.56% of customers are homeowners**.
+* Homeowners have a higher average income than non-homeowners.
+* Cross-analysis helps identify how **gender, occupation, age, education, and marital status** relate to customer income.
+
+---
+
+# 📂 Project Structure
+
+```text
+AdventureWorks-Customer-Data-Analysis/
+│
+├── README.md
+│
+├── SQL/
+│   ├── Data_Cleaning.sql
+│   ├── Customer_Overview.sql
+│   ├── Age_Analysis.sql
+│   ├── Income_Analysis.sql
+│   ├── Education_Analysis.sql
+│   ├── Occupation_Analysis.sql
+│   ├── Homeownership_Analysis.sql
+│   └── Cross_Analysis.sql
+│
+├── Dataset/
+│   └── AdventureWorks_Customer.csv
+│
+└── Results/
+    └── Analysis_Results.xlsx
+```
+
+---
+
+# 🚀 Key Takeaways
+
+This project strengthened my ability to use **SQL for real-world exploratory data analysis** and convert raw customer data into meaningful business insights.
+
+The project demonstrates my practical experience with:
+
+**SQL → Data Cleaning → Data Transformation → EDA → Customer Segmentation → Business Insights**
+
+---
+
+# 👨‍💻 Skills Highlighted
+
+**Data Analytics:**
+SQL | Exploratory Data Analysis | Customer Analytics | Data Cleaning | Business Insights
+
+**Technical:**
+MySQL | Advanced SQL | Aggregations | CASE Statements | Data Transformation
+
+**Additional Skills:**
+Python | Power BI | Excel | Data Visualization | ETL
+
+---
+
+## 📬 Connect With Me
+
+**Mrunal Harivivek Kumbhar**
+
+Data Analyst | Data Engineer | BI / Data Analytics
+
+📍 Pune, Maharashtra, India
+
+🔗 LinkedIn:
+https://www.linkedin.com/in/mrunalkumbhar/
+
+---
+
+⭐ If you find this project useful, feel free to **star the repository**!
