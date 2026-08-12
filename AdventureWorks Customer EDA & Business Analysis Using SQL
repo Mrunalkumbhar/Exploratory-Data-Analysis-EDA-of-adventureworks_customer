@@ -1,0 +1,311 @@
+# 📊 AdventureWorks Customer EDA & Business Analysis Using SQL
+
+## 📌 Project Overview
+
+This project performs an **Exploratory Data Analysis (EDA)** and **Business Analysis** on the AdventureWorks Customer dataset using **MySQL**.
+
+The objective is to transform raw customer data into meaningful business insights related to **customer demographics, age, income, education, occupation, home ownership, and customer segmentation**.
+
+The project includes **45 SQL-based analytical questions**, progressing from basic customer profiling to advanced business-focused analysis.
+
+---
+
+## 🎯 Business Objectives
+
+The analysis aims to answer questions such as:
+
+* Who are the highest-value customers?
+* Which customer segment has the highest average income?
+* Which occupation should a company target for premium products?
+* Does education level influence annual income?
+* Does home ownership correlate with higher income?
+* Which customer groups represent valuable business segments?
+* How do demographic characteristics relate to customer income?
+
+---
+
+## 🗂️ Dataset
+
+**Dataset:** AdventureWorks Customer Dataset
+
+### Key Columns
+
+| Column         | Description                |
+| -------------- | -------------------------- |
+| CustomerKey    | Unique customer identifier |
+| Gender         | Customer gender            |
+| MaritalStatus  | Marital status             |
+| BirthDate      | Customer date of birth     |
+| Age            | Customer age               |
+| EducationLevel | Highest education level    |
+| Occupation     | Customer occupation        |
+| AnnualIncome   | Annual customer income     |
+| HomeOwner      | Home ownership status      |
+| TotalChildren  | Number of children         |
+
+---
+
+## 🧹 Data Cleaning & Preparation
+
+Before performing the analysis, the dataset was checked and cleaned for data-quality issues.
+
+### Data Cleaning Activities
+
+* Checked for duplicate customer records
+* Checked for NULL and blank values
+* Validated categorical values
+* Cleaned invalid gender values
+* Cleaned marital-status values
+* Converted `BirthDate` from text to DATE format
+* Calculated customer age
+* Cleaned `AnnualIncome` values containing currency symbols
+* Identified invalid/negative values
+* Verified `CustomerKey` uniqueness
+
+---
+
+# 🔍 Exploratory Data Analysis
+
+## 1. Customer Overview
+
+The analysis examines:
+
+* Total number of customers
+* Gender distribution
+* Marital-status distribution
+* Male vs. Female percentage
+* Married vs. Single percentage
+
+### Key Finding
+
+The dataset contains approximately **18,148 customers** with a relatively balanced gender distribution.
+
+---
+
+## 2. Age Analysis
+
+Age-related analysis includes:
+
+* Minimum age
+* Maximum age
+* Average age
+* Age-group segmentation
+* Customer distribution by age group
+* Income comparison across age groups
+
+Example segments:
+
+* 30–45
+* 46–60
+* 61–80
+* 80+
+
+---
+
+## 3. Income Analysis
+
+Income analysis focuses on:
+
+* Minimum annual income
+* Maximum annual income
+* Average annual income
+* Income distribution
+* Income by education
+* Income by occupation
+* Income by age group
+
+### Income Range
+
+The cleaned dataset contains annual incomes ranging approximately from:
+
+**$10,000 to $170,000**
+
+---
+
+## 4. Education Analysis
+
+The project analyzes:
+
+* Customer count by education level
+* Average income by education level
+* Relationship between education and income
+
+Education categories include:
+
+* High School
+* Partial High School
+* Partial College
+* Bachelors
+* Graduate Degree
+
+---
+
+## 5. Occupation Analysis
+
+The project evaluates:
+
+* Customer count by occupation
+* Average income by occupation
+* Highest-income occupations
+* Occupation and education combinations
+
+Example occupations:
+
+* Professional
+* Management
+* Skilled Manual
+* Clerical
+* Manual
+
+---
+
+## 6. Home Ownership Analysis
+
+The analysis compares:
+
+* Homeowners vs. non-homeowners
+* Customer count
+* Percentage of homeowners
+* Average income by home ownership
+* Age groups with the highest number of homeowners
+
+---
+
+# 💼 Final Business Questions
+
+The final section focuses on business-oriented analysis.
+
+### Q41. Who are the highest-value customers based on annual income?
+
+Identifies customers earning the **maximum annual income** in the dataset.
+
+### Q42. Which customer segment earns the highest average income?
+
+Identifies the **occupation segment with the highest average annual income**.
+
+### Q43. Which occupation should a company target for premium products?
+
+Uses average income by occupation to identify an occupation that could be considered a potential **premium-product target segment**.
+
+### Q44. Does education level influence annual income?
+
+Compares average annual income across education levels to identify income differences.
+
+### Q45. Does home ownership correlate with higher annual income?
+
+Compares average annual income between homeowners and non-homeowners.
+
+---
+
+# 🛠️ SQL Skills Demonstrated
+
+This project demonstrates practical knowledge of:
+
+* `SELECT`
+* `WHERE`
+* `ORDER BY`
+* `DISTINCT`
+* `GROUP BY`
+* `HAVING`
+* `COUNT()`
+* `AVG()`
+* `MAX()`
+* `MIN()`
+* `ROUND()`
+* `CASE WHEN`
+* Subqueries
+* Aggregate functions
+* Conditional filtering
+* Data cleaning
+* Data transformation
+* Customer segmentation
+* Business-oriented analysis
+
+---
+
+# 📈 Key Business Insights
+
+The analysis demonstrates how customer data can be used to identify:
+
+* High-value customers
+* High-income occupations
+* High-income education segments
+* Premium-product target audiences
+* Customer demographic patterns
+* Income differences across customer groups
+* Home ownership patterns
+* Potential customer segmentation opportunities
+
+---
+
+# 📁 Project Structure
+
+```text
+AdventureWorks-Customer-EDA/
+│
+├── README.md
+│
+├── SQL/
+│   ├── 01_Data_Cleaning.sql
+│   ├── 02_Customer_Overview.sql
+│   ├── 03_Age_Analysis.sql
+│   ├── 04_Income_Analysis.sql
+│   ├── 05_Education_Analysis.sql
+│   ├── 06_Occupation_Analysis.sql
+│   └── 07_Business_Questions.sql
+│
+└── Dataset/
+    └── AdventureWorks_Customer.csv
+```
+
+---
+
+# 🎯 Business Value
+
+This project demonstrates how SQL can be used beyond basic querying to solve **real-world business problems**.
+
+The analysis can help businesses understand:
+
+**Customer → Segment → Income → Target Audience → Business Decision**
+
+For example, identifying high-income customer segments can support:
+
+* Premium product marketing
+* Customer segmentation
+* Targeted campaigns
+* Revenue opportunities
+* Personalized offers
+* Strategic customer analysis
+
+---
+
+# 👨‍💻 About Me
+
+**Mrunal Harivivek Kumbhar**
+
+Data Analyst | Data Engineer | BI & Analytics
+
+I have 3+ years of professional experience working with **SQL, Python, ETL, Power BI, data analysis, reporting automation, and business intelligence**.
+
+### Technical Skills
+
+**SQL | Python | Power BI | Excel | ETL | Data Analytics | Data Engineering | Business Intelligence | Data Visualization | Git/GitHub**
+
+I am currently interested in opportunities in:
+
+* Data Analyst
+* Senior Data Analyst
+* Data Engineer
+* BI Analyst
+* Business Intelligence
+* Analytics roles
+
+---
+
+# ⭐ If You Find This Project Useful
+
+If you find this project helpful, please consider giving the repository a **⭐ Star**.
+
+Feedback and suggestions are always welcome!
+
+**#SQL #DataAnalytics #DataAnalyst #MySQL #EDA #BusinessIntelligence #PowerBI #DataEngineering #Python #DataVisualization**
